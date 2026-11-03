@@ -112,3 +112,7 @@ Las políticas de Row Level Security en `schema.sql` dejan las tablas abiertas
 funcione sin necesidad de implementar autenticación. **Esto es intencional para
 un entorno educativo y nunca debe usarse así con datos reales.** En un sistema de
 producción cada política se restringe por usuario o rol autenticado.
+
+## Licencia
+
+[MIT](LICENSE).
