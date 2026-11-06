@@ -1,31 +1,17 @@
-# Plan del proyecto
+# Plan del proyecto: en pausa
 
 | | |
 |---|---|
-| **Sector objetivo** | Farmacéutica y distribución de medicamentos (Difare, GPF, Farmaenlace, Cruz Azul) |
-| **Segmento** | A |
-| **Esfuerzo asignado** | 4 % del tiempo de proyectos (dentro del 8 % farmacéutico) |
-| **Horizonte** | 9-nov-2026 → 31-ene-2027 |
+| **Estado** | En pausa desde 6-nov-2026 |
+| **Esfuerzo asignado** | 0 % |
+| **Motivo** | Su giro (farmacéutica y distribución de medicamentos) salió del plan: pocas vacantes TI. |
 
-## Para quién se diseña
+El plan de trabajo actual se concentra en tres giros: banca y fintech, energía e hidrocarburos, y estadística y
+planificación. Este proyecto queda como está (sigue público y funcional) y se retoma si su giro vuelve al plan.
 
-Áreas de logística, bodega y datos de distribuidoras y cadenas de farmacias: lotes, fechas de caducidad, rotación y despacho a sucursales.
+## Para retomarlo
 
-## Metas
-
-**Hasta 30-nov-2026**
-- [ ] Demo desplegada en Vercel con datos de prueba y enlace en el README
-
-**Hasta 31-dic-2026**
-- [ ] Control de lotes y fechas de caducidad con salida FEFO (primero en caducar, primero en salir)
-- [ ] Datos maestros de productos (código, principio activo, presentación, duplicados) con reglas de calidad
-
-**Hasta 31-ene-2027**
-- [ ] Guía didáctica completa probada por al menos un estudiante
-
-## Fuera de alcance
-
-Integración con ERP reales.
+- Si aparecen vacantes TI de distribución farmacéutica o logística, retomar las metas de lotes y caducidad (FEFO) y datos maestros.
 
 ---
-Revisión cada domingo: avance de metas y horas dedicadas. Plan general de sectores en COMPUMAX-EC/red-contactos-ti (privado).
+Plan general de sectores en COMPUMAX-EC/red-contactos-ti (privado).
