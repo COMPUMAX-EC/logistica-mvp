@@ -1,17 +1,18 @@
-# Plan del proyecto: en pausa
+# Project plan: paused
 
 | | |
 |---|---|
-| **Estado** | En pausa desde 6-nov-2026 |
-| **Esfuerzo asignado** | 0 % |
-| **Motivo** | Su giro (farmacéutica y distribución de medicamentos) salió del plan: pocas vacantes TI. |
+| **Status** | Paused since 6 Nov 2026 |
+| **Allocated effort** | 0% |
+| **Reason** | Its sector (pharmaceuticals and medicine distribution) left the plan: few IT openings. |
 
-El plan de trabajo actual se concentra en tres giros: banca y fintech, energía e hidrocarburos, y estadística y
-planificación. Este proyecto queda como está (sigue público y funcional) y se retoma si su giro vuelve al plan.
+The current work plan focuses on three sectors: banking and fintech, energy and hydrocarbons, and statistics and
+planning. This project stays as it is (still public and working) and will be resumed if its sector comes back into the
+plan.
 
-## Para retomarlo
+## To resume it
 
-- Si aparecen vacantes TI de distribución farmacéutica o logística, retomar las metas de lotes y caducidad (FEFO) y datos maestros.
+- If IT openings appear in pharmaceutical distribution or logistics, resume the goals for batches and expiry (FEFO) and master data.
 
 ---
-Plan general de sectores en COMPUMAX-EC/red-contactos-ti (privado).
+Overall sector plan in COMPUMAX-EC/red-contactos-ti (private).
