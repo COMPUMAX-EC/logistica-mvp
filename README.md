@@ -1,45 +1,45 @@
-# MVP Logística — Ejemplo de despliegue
+# Logistics MVP — Deployment example
 
-Sistema mínimo de logística (inventario, pedidos y envíos con tracking) pensado como
-**ejercicio didáctico de despliegue**: la meta no es el código en sí, sino que cualquier
-estudiante de logística pueda llevar un sistema real desde cero hasta funcionando en
-internet, entendiendo cada paso.
+🇬🇧 **English** · 🇪🇨 [Español](README.es.md)
 
-Arquitectura:
+> **Status: paused since 6 Nov 2026** (see [PLAN.md](PLAN.md)). It stays public and working.
+
+A minimal logistics system (inventory, orders and shipments with tracking) designed as a **hands-on deployment
+exercise**: the goal is not the code itself, but for any logistics student to take a real system from zero to running
+on the internet, understanding every step. The app's interface is in Spanish.
+
+Architecture:
 
 ```
 ┌─────────────────────┐        ┌───────────────────────────┐
 │   Frontend (React)  │ <────> │  Supabase (PostgreSQL +   │
-│   desplegado en     │  HTTPS │  API REST automática)      │
+│   deployed on       │  HTTPS │  automatic REST API)       │
 │   Vercel             │        │                            │
 └─────────────────────┘        └───────────────────────────┘
 ```
 
-No hay backend propio: Supabase expone la base de datos como API REST automáticamente,
-y la lógica de negocio (descontar stock, crear envíos, actualizar tracking) vive en
-funciones SQL dentro de la propia base de datos.
+There is no custom backend: Supabase exposes the database as a REST API automatically, and the business logic
+(deducting stock, creating shipments, updating tracking) lives in SQL functions inside the database itself.
 
-## Requisitos previos
+## Prerequisites
 
-- Cuenta gratuita en [supabase.com](https://supabase.com)
-- Cuenta gratuita en [vercel.com](https://vercel.com) (solo para el despliegue final)
-- [Node.js](https://nodejs.org) 18 o superior instalado en tu computador
-- Una cuenta de GitHub (recomendado, para conectar con Vercel)
+- Free account at [supabase.com](https://supabase.com)
+- Free account at [vercel.com](https://vercel.com) (only for the final deployment)
+- [Node.js](https://nodejs.org) 18 or later installed on your computer
+- A GitHub account (recommended, to connect with Vercel)
 
-## Paso 1 — Crear el proyecto en Supabase
+## Step 1 — Create the Supabase project
 
-1. Entra a [supabase.com](https://supabase.com) y crea un proyecto nuevo (elige una
-   contraseña de base de datos y guárdala).
-2. Espera a que el proyecto termine de aprovisionarse (1-2 minutos).
-3. Ve a **SQL Editor** → **New query**, pega el contenido de
-   [`supabase/schema.sql`](supabase/schema.sql) y presiona **Run**.
-4. Repite el mismo paso con [`supabase/seed.sql`](supabase/seed.sql) para cargar
-   productos de ejemplo.
-5. Ve a **Project Settings** → **API** y copia:
+1. Go to [supabase.com](https://supabase.com) and create a new project (choose a database password and keep it).
+2. Wait for the project to finish provisioning (1–2 minutes).
+3. Go to **SQL Editor** → **New query**, paste the contents of [`supabase/schema.sql`](supabase/schema.sql) and press
+   **Run**.
+4. Repeat the same step with [`supabase/seed.sql`](supabase/seed.sql) to load sample products.
+5. Go to **Project Settings** → **API** and copy:
    - **Project URL**
    - **anon public key**
 
-## Paso 2 — Ejecutar el frontend en tu computador
+## Step 2 — Run the frontend on your computer
 
 ```bash
 cd frontend
@@ -47,72 +47,67 @@ npm install
 cp .env.example .env
 ```
 
-Abre `.env` y pega los valores que copiaste de Supabase:
+Open `.env` and paste the values you copied from Supabase:
 
 ```
-VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
-VITE_SUPABASE_ANON_KEY=tu-anon-key
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-Levanta el servidor de desarrollo:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Abre [http://localhost:5173](http://localhost:5173). Deberías ver el panel con los
-8 productos de ejemplo. Prueba crear un pedido y luego generar un envío desde la
-sección **Pedidos** → **Envíos**.
+Open [http://localhost:5173](http://localhost:5173). You should see the dashboard with the 8 sample products. Try
+creating an order and then generating a shipment from **Pedidos** (Orders) → **Envíos** (Shipments).
 
-## Paso 3 — Desplegar a producción (Vercel)
+## Step 3 — Deploy to production (Vercel)
 
-1. Sube esta carpeta a un repositorio de GitHub.
-2. Entra a [vercel.com](https://vercel.com) → **Add New Project** → importa el repo.
-3. En **Root Directory** selecciona `frontend`.
-4. En **Environment Variables** agrega las mismas dos variables del paso 2
-   (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`).
-5. Presiona **Deploy**. En 1-2 minutos tendrás una URL pública tipo
-   `https://tu-proyecto.vercel.app`.
+1. Push this folder to a GitHub repository.
+2. Go to [vercel.com](https://vercel.com) → **Add New Project** → import the repo.
+3. Under **Root Directory** select `frontend`.
+4. Under **Environment Variables** add the same two variables from step 2 (`VITE_SUPABASE_URL`,
+   `VITE_SUPABASE_ANON_KEY`).
+5. Press **Deploy**. In 1–2 minutes you will have a public URL like `https://your-project.vercel.app`.
 
-Cada vez que hagas `git push`, Vercel vuelve a desplegar automáticamente. Ese es el
-flujo real de CI/CD que vas a ver en cualquier equipo de software.
+Every time you `git push`, Vercel redeploys automatically. That is the real CI/CD flow you will see on any software
+team.
 
-## Estructura del proyecto
+## Project structure
 
 ```
 logistica-mvp/
 ├── supabase/
-│   ├── schema.sql     # tablas, funciones SQL y seguridad (RLS)
-│   └── seed.sql        # datos de ejemplo
+│   ├── schema.sql     # tables, SQL functions and security (RLS)
+│   └── seed.sql        # sample data
 ├── frontend/
 │   ├── src/
-│   │   ├── pages/       # Panel, Inventario, Pedidos, Envíos
-│   │   ├── lib/         # cliente de Supabase y tipos TypeScript
+│   │   ├── pages/       # Dashboard, Inventory, Orders, Shipments
+│   │   ├── lib/         # Supabase client and TypeScript types
 │   │   └── components/
 │   ├── .env.example
-│   └── vercel.json      # configuración de rutas para Vercel
+│   └── vercel.json      # route configuration for Vercel
 └── README.md
 ```
 
-## Flujo funcional
+## Functional flow
 
-1. **Inventario**: se registran productos con stock y stock mínimo.
-2. **Pedidos**: se elige un cliente y productos; la función SQL
-   `fn_crear_pedido` valida el stock disponible y lo descuenta de forma atómica.
-3. **Envíos**: desde un pedido confirmado se genera un envío con código de
-   tracking (`fn_crear_envio`).
-4. **Tracking**: cada envío tiene una línea de tiempo de eventos; el botón
-   "Marcar en tránsito / entregado" llama a `fn_actualizar_envio_estado`, que
-   registra el evento y, al llegar a "entregado", cierra el pedido.
+1. **Inventory**: products are registered with stock and minimum stock.
+2. **Orders**: you pick a customer and products; the SQL function `fn_crear_pedido` checks available stock and deducts
+   it atomically.
+3. **Shipments**: from a confirmed order a shipment is generated with a tracking code (`fn_crear_envio`).
+4. **Tracking**: each shipment has a timeline of events; the "Mark in transit / delivered" button calls
+   `fn_actualizar_envio_estado`, which records the event and, on reaching "delivered", closes the order.
 
-## Nota de seguridad
+## Security note
 
-Las políticas de Row Level Security en `schema.sql` dejan las tablas abiertas
-(lectura/escritura pública con la llave `anon`) a propósito, para que el ejercicio
-funcione sin necesidad de implementar autenticación. **Esto es intencional para
-un entorno educativo y nunca debe usarse así con datos reales.** En un sistema de
-producción cada política se restringe por usuario o rol autenticado.
+The Row Level Security policies in `schema.sql` leave the tables open (public read/write with the `anon` key) on
+purpose, so the exercise works without implementing authentication. **This is intentional for a learning
+environment and must never be used this way with real data.** In a production system each policy is restricted by
+authenticated user or role.
 
-## Licencia
+## License
 
 [MIT](LICENSE).
